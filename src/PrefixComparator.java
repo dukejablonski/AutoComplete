@@ -1,5 +1,5 @@
 import java.util.Comparator;
-
+import java.util.*;
 /**
  * Factor pattern for obtaining PrefixComparator objects
  * without calling new. Users simply use
@@ -42,6 +42,23 @@ public class    PrefixComparator implements Comparator<Term> {
     public int compare(Term v, Term w) {
         // change this to use myPrefixSize as specified,
         // replacing line below with code
-        return v.getWord().compareTo(w.getWord());
+        //v - w
+        for(int i=0; i < myPrefixSize; i++) {
+            try {
+
+                if (v.getWord().charAt(i) - w.getWord().charAt(i) > 0) {
+                    return 1;
+                }
+                if (v.getWord().charAt(i) - w.getWord().charAt(i) < 0) {
+                    return -1;
+                }
+            }
+            catch(StringIndexOutOfBoundsException e) {
+                return -1;
+            }
+
+        }
+
+        return 0;
     }
 }
