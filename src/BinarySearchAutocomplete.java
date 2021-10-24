@@ -120,6 +120,7 @@ public class BinarySearchAutocomplete implements Autocompletor {
 		}
 
 
+
 		return a;
 	
 	}
