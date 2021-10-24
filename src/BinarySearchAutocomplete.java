@@ -108,9 +108,19 @@ public class BinarySearchAutocomplete implements Autocompletor {
 			return new ArrayList<>();
 		}
 
-		// write code here for P5 assignment
+		PriorityQueue<Term> q = new PriorityQueue<>();
+		for(int i = first; i <= last; i++) {
+			q.add(myTerms[i]);
+		}
 
-		return null;
+		ArrayList<Term> a = new ArrayList<>();
+		int m = Math.min(k, q.size());
+		for(int j=0;j<m;j++){
+			a.add(q.remove());
+		}
+
+
+		return a;
 	
 	}
 
