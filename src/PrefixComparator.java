@@ -15,6 +15,7 @@ public class    PrefixComparator implements Comparator<Term> {
 
     /**
      * private constructor, called by getComparator
+     *
      * @param prefix is prefix used in compare method
      */
     private PrefixComparator(int prefix) {
@@ -24,6 +25,7 @@ public class    PrefixComparator implements Comparator<Term> {
 
     /**
      * Factory method to return a PrefixComparator object
+     *
      * @param prefix is the size of the prefix to compare with
      * @return PrefixComparator that uses prefix
      */
@@ -42,22 +44,37 @@ public class    PrefixComparator implements Comparator<Term> {
     public int compare(Term v, Term w) {
         // change this to use myPrefixSize as specified,
         // replacing line below with code
-        //v - w
-        for(int i=0; i < myPrefixSize; i++) {
+
+        for (int i = 0; i < myPrefixSize; i++) {
+            try {
+                if ((v.getWord().charAt(i) - w.getWord().charAt(i) < 0)) {
+                    return -1;
+                }
+                if ((v.getWord().charAt(i) - w.getWord().charAt(i) > 0)) {
+                    return 1;
+                }
+            } catch (StringIndexOutOfBoundsException e) {
+                if (v.getWord().length() < myPrefixSize && w.getWord().length() < myPrefixSize) {
+                    if (v.getWord().length() > w.getWord().length()) {
+                        return 1;
+                    }
+                    if (v.getWord().length() < w.getWord().length()) {
+                        return -1;
+                    }
+                }
+                if (v.getWord().length() >= myPrefixSize && w.getWord().length() < myPrefixSize) {
+
+                    return 1;
+                }
+                if (v.getWord().length() < myPrefixSize && w.getWord().length() >= myPrefixSize) {
+
+                    return -1;
+                }
 
 
-            if(v.getWord().charAt(i) - w.getWord().charAt(i) > 0){
-                return 1;
             }
-            if(v.getWord().charAt(i) - w.getWord().charAt(i) < 0) {
-                return -1;
-            }
-            else if(v.getWord().length() < myPrefixSize && w.getWord().length() >= myPrefixSize){
-                return -1;
-            }
-
         }
-
         return 0;
-    }
-}
+    }}
+
+
