@@ -44,16 +44,15 @@ public class    PrefixComparator implements Comparator<Term> {
         // replacing line below with code
         //v - w
         for(int i=0; i < myPrefixSize; i++) {
-            try {
 
-                if (v.getWord().charAt(i) - w.getWord().charAt(i) > 0) {
-                    return 1;
-                }
-                if (v.getWord().charAt(i) - w.getWord().charAt(i) < 0) {
-                    return -1;
-                }
+
+            if(v.getWord().charAt(i) - w.getWord().charAt(i) > 0){
+                return 1;
             }
-            catch(StringIndexOutOfBoundsException e) {
+            if(v.getWord().charAt(i) - w.getWord().charAt(i) < 0) {
+                return -1;
+            }
+            else if(v.getWord().length() < myPrefixSize && w.getWord().length() >= myPrefixSize){
                 return -1;
             }
 

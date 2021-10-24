@@ -45,15 +45,35 @@ public class BinarySearchLibrary {
 	public static <T>
     	int firstIndex(List<T> list,
 	               	   T target, Comparator<T> comp) {
-		
+		if (list.isEmpty()) {
+			return -1;
+		}
 		int low = -1;
-		int high = list.size()-1;
-		
-		// (low,high] contains target
-		// TODO: write method
-		
-		return -1;
+		int high = list.size() - 1;
+
+		while (low+1!= high) {
+			int mid = (low + high) / 2;
+			T midval = list.get(mid);
+			int whatever = comp.compare(midval, target);
+			if (whatever < 0) {
+				low = mid;
+			}
+			if (whatever >= 0) {
+
+				high = mid;
+			}
+		}
+		if (comp.compare(list.get(high), target) == 0)
+		{
+			return high;
+		}
+
+		else return -1;
 	}
+
+
+		// (low,high] contains target
+
 
 	 /**                                                                                          
      * Return the index of the last object (largest index)
@@ -71,14 +91,32 @@ public class BinarySearchLibrary {
 	public static <T>
 	int lastIndex(List<T> list, 
                	  T target, Comparator<T> comp) {
-		
+		if (list.isEmpty()) {
+			return -1;
+		}
 		int low = 0;
 		int high = list.size();
-		
-		// target in [low,high)
-		// TODO: write  method
-		
-		return -1;
+		while (low!= high-1) {
+			int m = (low + high) / 2;
+			T midval = list.get(m);
+			int whatever = comp.compare(midval, target);
+			if (whatever < 0) {
+				high = m;
+			}
+			if (whatever >= 0) {
+
+				low = m;
+			}
+		}
+		if (comp.compare(list.get(low), target) == 0)
+		{
+			return low;
+		}
+
+		else return -1;
 	}
+		// target in [low,high)
+
+
 	
 }
