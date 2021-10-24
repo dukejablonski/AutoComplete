@@ -109,7 +109,7 @@ public class BinarySearchAutocomplete implements Autocompletor {
 		}
 
 		PriorityQueue<Term> pq = new PriorityQueue<>(Comparator.comparing(Term::getWeight));
-		for(int i = last; i <= first; i--) {
+		for(int i = first; i <= last; i++) {
 			pq.add(myTerms[i]);
 		}
 
