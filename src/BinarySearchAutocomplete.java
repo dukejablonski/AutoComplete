@@ -108,15 +108,15 @@ public class BinarySearchAutocomplete implements Autocompletor {
 			return new ArrayList<>();
 		}
 
-		PriorityQueue<Term> q = new PriorityQueue<>();
-		for(int i = first; i <= last; i++) {
-			q.add(myTerms[i]);
+		PriorityQueue<Term> pq = new PriorityQueue<>(Comparator.comparing(Term::getWeight));
+		for(int i = last; i <= first; i--) {
+			pq.add(myTerms[i]);
 		}
 
 		ArrayList<Term> a = new ArrayList<>();
-		int m = Math.max(k, q.size());
+		int m = Math.min(k, pq.size());
 		for(int j=0;j<m;j++){
-			a.add(q.remove());
+			a.add(pq.remove());
 		}
 
 
