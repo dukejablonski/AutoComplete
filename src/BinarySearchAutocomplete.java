@@ -108,7 +108,7 @@ public class BinarySearchAutocomplete implements Autocompletor {
 			return new ArrayList<>();
 		}
 
-		PriorityQueue<Term> pq = new PriorityQueue<>(Comparator.comparing(Term::getWeight));
+		PriorityQueue<Term> pq = new PriorityQueue<>(Collections.reverseOrder(Comparator.comparing(Term::getWeight)));
 		for(int i = first; i <= last; i++) {
 			pq.add(myTerms[i]);
 		}
