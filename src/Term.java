@@ -83,3 +83,4 @@ public class Term implements Comparable<Term> {
 		return this.compareTo(other) == 0;
 	}
 }
+

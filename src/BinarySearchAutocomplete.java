@@ -114,7 +114,7 @@ public class BinarySearchAutocomplete implements Autocompletor {
 		}
 
 		ArrayList<Term> a = new ArrayList<>();
-		int m = Math.min(k, q.size());
+		int m = Math.max(k, q.size());
 		for(int j=0;j<m;j++){
 			a.add(q.remove());
 		}
