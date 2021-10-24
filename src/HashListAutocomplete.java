@@ -37,7 +37,7 @@ public class HashListAutocomplete implements Autocompletor
             String s = terms[i];
             for(int j=0; j<= Math.min(MAX_PREFIX, s.length());j++){
 
-                    String ss = s.substring(j, 0);
+                    String ss = s.substring(0, j);
                     Term a = new Term(terms[i],weights[i]);
                     myMap.putIfAbsent(ss, new ArrayList<Term>());
                     myMap.get(ss).add(a);
