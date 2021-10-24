@@ -64,9 +64,8 @@ public class BinarySearchLibrary {
 			}
 		}
 		if (comp.compare(list.get(high), target) == 0)
-		{
 			return high;
-		}
+
 
 		else return -1;
 	}
@@ -94,24 +93,25 @@ public class BinarySearchLibrary {
 		if (list.isEmpty()) {
 			return -1;
 		}
+
 		int low = 0;
 		int high = list.size();
-		while (low!= high-1) {
-			int m = (low + high) / 2;
-			T midval = list.get(m);
-			int whatever = comp.compare(midval, target);
-			if (whatever < 0) {
-				high = m;
-			}
-			if (whatever >= 0) {
 
-				low = m;
+		while (low != high-1) {
+			int mid = (low + high) / 2;
+			T midval = list.get(mid);
+			int whatever = comp.compare(midval, target);
+			if (whatever > 0) {
+				high = mid;
+			}
+			if (whatever <= 0) {
+
+				low = mid;
 			}
 		}
 		if (comp.compare(list.get(low), target) == 0)
-		{
+
 			return low;
-		}
 
 		else return -1;
 	}
