@@ -17,8 +17,6 @@ public class HashListAutocomplete implements Autocompletor
     @Override
     public List<Term> topMatches(String prefix, int k) {
 
-        List<Term> all = myMap.get(prefix);
-        List<Term> list = all.subList(0, Math.min(k, all.size()));
        if(prefix == null) { throw new NullPointerException("Null pointer");}
 
        if(!myMap.containsKey(prefix)) {return new ArrayList<Term>();}
@@ -27,6 +25,8 @@ public class HashListAutocomplete implements Autocompletor
 
        if(k < 0 ){throw new IllegalArgumentException("Illegal value of k" + k); }
 
+        List<Term> all = myMap.get(prefix);
+        List<Term> list = all.subList(0, Math.min(k, all.size()));
        return list;
     }
 
@@ -36,12 +36,11 @@ public class HashListAutocomplete implements Autocompletor
         for(int i=0; i<terms.length;i++){
             String s = terms[i];
             for(int j=0; j<= Math.min(MAX_PREFIX, s.length());j++){
-                if(s.length()>=j){
+
                     String ss = s.substring(j, 0);
                     Term a = new Term(terms[i],weights[i]);
                     myMap.putIfAbsent(ss, new ArrayList<Term>());
                     myMap.get(ss).add(a);
-                }
             }
         }
 
