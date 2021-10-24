@@ -6,6 +6,13 @@ public class HashListAutocomplete implements Autocompletor
     private Map<String, List<Term>> myMap;
     private int mySize;
 
+    public HashListAutocomplete(String[] terms, double[] weights)
+    {
+        if (terms == null || weights == null)
+            throw new NullPointerException("ok");
+        initialize(terms, weights);
+    }
+
 
     @Override
     public List<Term> topMatches(String prefix, int k) {
