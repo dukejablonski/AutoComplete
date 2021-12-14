@@ -1,3 +1,1 @@
-The information for this project can be found via this README
-
-https://coursework.cs.duke.edu/201-public-documentation/p5-autocomplete/-/blob/main/README.md
+The following project uses search query data to create an autocomplete algorithm. 201/Fall2021.
